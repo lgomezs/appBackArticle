@@ -1,0 +1,12 @@
+CREATE DATABASE BDCUSTOMER;
+
+USE BDCUSTOMER;
+
+CREATE TABLE BDCUSTOMER.dbo.Customer (
+	ID int IDENTITY(0,1) NOT NULL,
+	name varchar(100) NULL,
+	email varchar(100) NULL,
+	phone int NULL
+);
+
+
