@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: appBackArticle
+  name: appBackArticle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appBackArticle
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: appBackArticle
+    spec:
+      containers:
+        - name: appBackArticle
+          image: lgomezs/appbackarticle:1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PROFILE
+              value: dev
+      imagePullSecrets:
+        - name: regcred

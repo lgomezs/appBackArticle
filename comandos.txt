@@ -1,0 +1,20 @@
+## create image and push
+--generar artefacto
+mvn clean install
+--generar imagen
+docker build -t appbackarticle .
+docker images
+--run image
+docker run -d -p 8080:8080 appbackarticle
+--tag image
+docker tag appbackarticle lgomezs/appbackarticle:1.0
+---Conectarse al repositorio de Docker Hub
+docker login
+--push image
+docker push lgomezs/appbackarticle:1.0
+
+--eliminar una imagen
+docker image rm [imageID]
+docker image rm -f [imageID]
+
+## deploy AKS
