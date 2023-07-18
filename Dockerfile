@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk-slim
-LABEL maintainer="Luis miguel Gomez Saavedra <lgomesaa@everis.com>"
+LABEL maintainer="Luis miguel Gomez Saavedra <luismgsa@indracompany.com>"
 
 WORKDIR /opt/
 ADD  /target/appBackArticle*.jar /opt/app.jar

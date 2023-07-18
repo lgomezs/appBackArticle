@@ -2,16 +2,26 @@
 --generar artefacto
 mvn clean install
 --generar imagen
-docker build -t appbackarticle .
+cd devops
+docker build -t appback-article .
 docker images
 --run image
-docker run -d -p 8080:8080 appbackarticle
+docker run -d -p 8080:8080 appback-article
+--levantar imae with enviroment
+docker run -e AZURE_CLIENT_ID=ce0dcd48-6f9a-40ab-92b5-508dc01f8f7f -e AZURE_CLIENT_SECRET=eh18Q~7Ou50bXQpUab6kBD6sgl6xYN8HgQ6GObSQ -e AZURE_KEYVAULT_ENDPOINT=https://kv-rg-dev1.vault.azure.net/ -e AZURE_TENANT_ID=4e8711b5-1edc-44f8-84c2-d93e9cbb2650 -d -p 8080:8080 appback-article
+
+AZURE_CLIENT_ID=ce0dcd48-6f9a-40ab-92b5-508dc01f8f7f
+AZURE_CLIENT_SECRET=eh18Q~7Ou50bXQpUab6kBD6sgl6xYN8HgQ6GObSQ
+AZURE_KEYVAULT_ENDPOINT=https://kv-rg-dev1.vault.azure.net/
+AZURE_TENANT_ID=4e8711b5-1edc-44f8-84c2-d93e9cbb2650
+PROFILE=dev
+
 --tag image
-docker tag appbackarticle lgomezs/appbackarticle:1.0
+docker tag appback-article lgomezs/appback-article:1.0
 ---Conectarse al repositorio de Docker Hub
 docker login
 --push image
-docker push lgomezs/appbackarticle:1.0
+docker push lgomezs/appback-article:1.0
 
 --eliminar una imagen
 docker image rm [imageID]
