@@ -1,8 +1,10 @@
-CREATE DATABASE BDCUSTOMER;
+CREATE DATABASE bdservertest;
 
-USE BDCUSTOMER;
+USE bdservertest;
 
-CREATE TABLE BDCUSTOMER.dbo.Customer (
+CREATE SCHEMA customer;
+
+CREATE TABLE bdservertest.customer.Customer (
 	ID int IDENTITY(0,1) NOT NULL,
 	name varchar(100) NULL,
 	email varchar(100) NULL,
