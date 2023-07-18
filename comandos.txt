@@ -28,3 +28,12 @@ docker image rm [imageID]
 docker image rm -f [imageID]
 
 ## deploy AKS
+az login
+--get kubeconfig
+az aks get-credentials --resource-group RG_DEV --name clusterdev
+
+kubectl apply -f appback-article-secrets.yaml
+kubectl apply -f AKS-deploy.yaml
+kubectl apply -f AKS-service.yaml
+
+

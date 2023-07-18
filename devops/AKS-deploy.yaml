@@ -3,19 +3,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: appBackArticle
-  name: appBackArticle
+    app: appback-article
+  name: appback-article
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: appBackArticle
+      app: appback-article
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: appBackArticle
+        app: appback-article
     spec:
       containers:
         - name: appBackArticle
@@ -24,6 +24,26 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: AZURE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: appback-article-secrets
+                  key: AZURE_CLIENT_ID
+            - name: AZURE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: appback-article-secrets
+                  key: AZURE_CLIENT_SECRET
+            - name: AZURE_KEYVAULT_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: appback-article-secrets
+                  key: AZURE_KEYVAULT_ENDPOINT
+            - name: AZURE_TENANT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: appback-article-secrets
+                  key: AZURE_TENANT_ID
             - name: PROFILE
               value: dev
       imagePullSecrets:
