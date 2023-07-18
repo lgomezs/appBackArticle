@@ -18,8 +18,8 @@ spec:
         app: appback-article
     spec:
       containers:
-        - name: appBackArticle
-          image: lgomezs/appback-article
+        - name: appback-article
+          image: lgomezs/appback-article:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
